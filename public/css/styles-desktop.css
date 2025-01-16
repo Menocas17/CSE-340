@@ -1,0 +1,110 @@
+
+
+@media (min-width: 1024px) { 
+    h1 {
+        font-size: 4.4rem;
+      }
+      h2 {
+        font-size: 3.6rem;
+      }
+
+
+
+      #wrapper {
+        background-color: white;
+        border: .5rem solid #28B5D6;
+        border-radius: 1rem;
+        padding: 3rem 2rem .5rem 2rem;
+      }
+
+      body {
+        background-image: url(../images/site/small_check.jpg);
+        background-size: cover;
+      }
+
+      /* Styling the header  */
+
+      header {
+        padding: 0 5rem;
+      }
+
+      .siteName {
+        font-size: 4rem;
+      }
+
+      #tools {
+        font-size: 2rem;
+      }
+
+      /* Styling the nav  */
+
+    nav ul {
+        font-size: 1.8rem;
+    }
+
+    /* Styling the hero and main content */
+
+    h1 {
+        margin-left: 5rem;
+        text-align: left;
+      }
+
+    .hero {
+        max-width: 86%;
+        min-height: 50rem;
+        margin: 0 auto;
+        background-image: url(../images/vehicles/delorean.jpg);
+        background-size: contain;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+
+      .hero-content {
+        max-width: 30%;
+        min-height: 25rem;
+      }
+      
+      .hero-content h2 {
+        font-size: 3.8rem;
+        margin: 0;
+      }
+      
+      .hero-content p {
+        font-size: 2.5rem;
+      
+      }
+
+      .action-button {
+        font-size: 2.5rem;
+      }
+
+    /* stylinh the upgrades and review section  */
+
+    .upgrades-and-reviews-sect {
+        grid-template-columns: 1fr 1fr;
+        gap: 5rem;
+      }
+
+      .card {
+        width: 90%;
+        font-size: 1.8rem;
+      }
+
+    .reviews h2 {
+        text-align: left;
+    } 
+
+    .reviews li {
+        font-size: 2rem;
+        line-height: 5.5rem;
+      }
+
+      footer {
+        background-color: white;
+        color: black;
+        text-align: center;
+      }
+}
+

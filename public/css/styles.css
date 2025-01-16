@@ -1,6 +1,212 @@
-/******* Change Box Model ***************/
-*,
-*:before,
-*:after {
+html {
   box-sizing: border-box;
+  font-size: 62.5%;
 }
+
+*, *:before, *:after {
+  box-sizing: inherit
+}
+
+body {
+  font-family: "Roboto", serif;;
+  font-size: 1.6rem;
+  line-height:1.5;
+}
+h1, h2, h3 {
+  font-weight: 700;
+  font-family: "Roboto", serif;;
+  margin: 2.5rem 0;
+}
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2.5rem;
+}
+
+img {
+  max-width: 100%;
+  display:block;
+  margin: 0 auto;
+}
+.container {
+  width: min(90%, 140rem);
+  margin: 0 auto
+}
+
+
+/* Styling the header  */
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+header a {
+  color: black;
+  text-decoration: none;
+}
+
+.siteName {
+  font-size: 2.5rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.siteName img {
+  width: 5rem;
+}
+
+#tools {
+  font-size: 1.8rem;
+  font-weight: 300;
+}
+
+/* Styling the nav  */
+
+nav {
+  background-color: black;
+  border-radius: .5rem;
+  color: white;
+  padding: 1rem;
+}
+
+nav ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+nav li {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+nav li:hover {
+  color: #28B5D6;
+}
+
+/* Styling the hero and main content  */
+
+
+h1 {
+  text-align: center;
+}
+
+.hero {
+  max-width: 100%;
+  min-height: 20rem;
+  margin: 0 auto;
+  background-image: url(../images/vehicles/delorean.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media (min-width: 500px) { 
+  .hero {
+    min-height: 35rem;
+  }
+}
+
+
+.hero-content {
+  
+  background-color: rgba(255, 255, 255, 0.868);
+  text-align: center;
+  color: #28B5D6;
+  max-width: 40%;
+  min-height: 17rem;
+}
+
+.hero-content h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+
+}
+
+@media (min-width: 768px) { 
+  .hero-content h2 {
+    font-size: 2.5rem;
+    margin: 0;
+  }
+  
+  .hero-content p {
+    font-size: 1.8rem;
+  
+  }
+}
+
+
+.action-button {
+  text-decoration: none;
+  color: black;
+  background-color: #28B5D6;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  font-weight: 900;
+}
+
+
+
+/* Styling the upgrades and revies sect  */
+
+.upgrades-and-reviews-sect {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 5rem;
+  padding: 0 3rem;
+  text-align: center;
+}
+
+.upgrades-and-reviews-sect h2 {
+  margin-bottom: 5rem;
+}
+
+.card {
+  padding: 2.5rem 1rem;
+  box-shadow: 0 0 10px rgba(40, 182, 214, 0.315);
+  border-radius: .5rem;
+  margin-bottom: 2.5rem;
+  width: 90%;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.card:hover {
+  transform:scale(1.05);
+}
+
+.upgrades {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+}
+
+
+.reviews li {
+  text-align: left;
+  font-size: 1.8rem;
+  line-height: 4rem;
+}
+
+/* Styling the footer  */
+
+footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
