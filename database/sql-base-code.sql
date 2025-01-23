@@ -2,7 +2,7 @@ CREATE TYPE public.account_type AS ENUM
     ('Client', 'Employee', 'Admin');
 
 ALTER TYPE public.account_type
-    OWNER TO cs340database;
+    OWNER TO cse340finaldatabase1;
 
 
 --Table structure for table `classsification`
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS public.inventory
 -- Create relationship between `classification` and `inventory` tables
 
 ALTER TABLE IF EXISTS public.inventory
-    ADD CONSTRAINT fk_classification FOREING KEY (classification_id)
+    ADD CONSTRAINT fk_classification FOREIGN KEY (classification_id)
     REFERENCES public.classification (classification_id) MATCH SIMPLE
     ON UPDATE CASCADE
     ON DELETE NO ACTION;
@@ -242,5 +242,29 @@ VALUES   (
     'White',
     5
   );
+
+  -- Updating the description in the GM Hummer
+
+UPDATE public.inventory
+SET inv_description = REPLACE(inv_description, 'small', 'huge')
+WHERE inv_id = 10;
+
+-- Selecting the model and make information from the cars that belong to the sport classification
+
+
+SELECT 
+    public.inventory.inv_make,
+    public.inventory.inv_model,
+    public.classification.classification_id
+FROM public.inventory
+INNER JOIN public.classification
+ON public.inventory.classification_id = public.classification.classification_id
+WHERE public.classification.classification_name = 'Sport';
+
+--Updating the path for the images and thumbnails
+
+UPDATE public.inventory
+SET inv_image = REPLACE(inv_image, 'images/', 'images/vehicles/'),
+    inv_thumbnail = REPLACE(inv_thumbnail, 'images/', 'images/vehicles/')
 
 
