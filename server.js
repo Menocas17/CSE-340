@@ -13,6 +13,7 @@ const static = require("./routes/static")
 const baseController = require('./controllers/baseController')
 const inventoryRoute = require('./routes/inventoryRoute')
 const utilities = require ('./utilities')
+const error = require('./routes/errorRoute')
 
 
 /* ***********************
@@ -36,6 +37,10 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 // Inventory routes 
 
 app.use('/inv', inventoryRoute)
+
+//505 error route
+
+app.use(error)
 
 
 // File Not Found Route - must be last route in list

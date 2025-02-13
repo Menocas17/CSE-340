@@ -4,25 +4,23 @@ const Util = {}
 // Constructs teh nav HTML unordered list 
 
 Util.getNav = async function (req, res, next) {
-    let data = await invModel.getClassifications()
-    console.log(data)
-    let list = '<ul>'
-    list += '<li><a href="/" title="Home Page">Home</a></li>'
-    data.rows.forEach((row) => {
-        list += '<li>'
-        list +=
-            '<a href="/inv/type/' + 
-            row.classification_id +
-            '"title="See our Inventory of ' +
-            row.classification_name +
-            ' vehicles">' +
-            row.classification_name +
-            "</a>"
-        list += "</li>"
-    });
-    list += "</ul>"
+  let data = await invModel.getClassifications();
+  console.log(data);
 
-    return list 
+  let list = `
+      <ul>
+          <li><a href="/" title="Home Page">Home</a></li>
+          ${data.rows.map(row => `
+              <li>
+                  <a href="/inv/type/${row.classification_id}" title="See our Inventory of ${row.classification_name} vehicles">
+                      ${row.classification_name}
+                  </a>
+              </li>
+          `).join('')}
+      </ul>
+  `;
+
+  return list;
 }
 
 
@@ -39,7 +37,7 @@ Util.buildClassificationGrid = async function (data) {
           <a href="../../inv/detail/${vehicle.inv_id}" 
              title="View ${vehicle.inv_make} ${vehicle.inv_model} details">
             <img src="${vehicle.inv_thumbnail}" 
-                 alt="Image of ${vehicle.inv_make} ${vehicle.inv_model} on CSE Motors" />
+                 alt="Image of ${vehicle.inv_make} ${vehicle.inv_model} on CSE Motors" >
           </a>
           <div class="namePrice">
             <hr />
@@ -68,7 +66,7 @@ Util.buildVehicleDetailsView = async function(data) {
 
     return `
           <div class="details-grid">
-              <img src="${vehicleDetails.inv_image}"/>
+              <img src="${vehicleDetails.inv_image}" alt="${vehicleDetails.invModel} ${vehicleDetails.inv_make}">
 
               <div>
                   <h2>${vehicleDetails.inv_make} ${vehicleDetails.inv_model} Deteails</h2>

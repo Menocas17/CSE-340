@@ -241,6 +241,18 @@ h1 {
   padding: 1rem;
   border-radius: 1rem;
 }
+
+
+/* Styling the error page  */
+
+.error-heading{
+  text-align: center;
+}
+
+.error-message {
+  text-align: center;
+}
+
 /* Styling the footer  */
 
 footer {
