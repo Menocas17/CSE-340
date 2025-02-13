@@ -2,7 +2,7 @@ const { application } = require('express')
 const { Pool } = require ('pg')
 require ('dotenv').config()
 
-
+console.log("Database URL:", process.env.DATABASE_URL);
 // Conection Pool
 // SSL obkect needed for local testing of app
 // But will cause problems in production environment 

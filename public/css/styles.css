@@ -88,9 +88,20 @@ nav li {
   transition: transform 0.3s ease, color 0.3s ease;
 }
 
-nav li:hover {
-  color: #28B5D6;
+
+nav li a {
+  text-decoration:  none;
+  padding: .2rem;
+  color: white;
+  background-color: black;
+  transition: color .5s ease, background-color .5s ease;
 }
+
+nav li a:hover {
+  color: black;
+  background-color: white;
+}
+
 
 /* Styling the hero and main content  */
 
@@ -202,6 +213,34 @@ h1 {
   line-height: 4rem;
 }
 
+/* Styling the cards in the filtered category page  */
+
+#inv-display {
+  list-style: none;
+  padding: 0; 
+  
+}
+
+.card.category-card {
+  box-shadow: 0 0 10px rgba(92, 93, 94, 0.315);
+  margin: 0 auto;
+  margin-bottom: 2.5rem;
+}
+
+@media (min-width: 500px) { 
+  .card.category-card{
+    width: 60%;
+  }
+}
+
+
+/* Styling the details page  */
+
+.details-grid div p:nth-child(even) {
+  background-color: #F6F6F6;
+  padding: 1rem;
+  border-radius: 1rem;
+}
 /* Styling the footer  */
 
 footer {

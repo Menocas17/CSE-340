@@ -101,10 +101,38 @@
         line-height: 5.5rem;
       }
 
-      footer {
+      /* footer {
         background-color: white;
         color: black;
         text-align: center;
-      }
+      } */
+}
+
+@media (min-width: 765px) { 
+  
+  #inv-display {
+    display: grid;
+    Grid-template-columns: repeat(
+	    auto-fill,
+	    minmax(20rem, 1fr)
+    );
+  }
+
+  .card.category-card {
+    width: 90%;
+  }
+
+  .card.category-card h2 {
+    font-size: 2.5rem;
+  }
+
+  /* Styling the details page  */
+
+  .details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
 }
 

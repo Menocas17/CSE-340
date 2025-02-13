@@ -25,7 +25,7 @@ Util.getNav = async function (req, res, next) {
     return list 
 }
 
-module.exports = Util
+
 
 // Build the classidicatio view HTML 
 
@@ -35,7 +35,7 @@ Util.buildClassificationGrid = async function (data) {
       }
     
       const gridItems = data.map(vehicle => `
-        <li>
+        <li class="card category-card">
           <a href="../../inv/detail/${vehicle.inv_id}" 
              title="View ${vehicle.inv_make} ${vehicle.inv_model} details">
             <img src="${vehicle.inv_thumbnail}" 
@@ -56,3 +56,40 @@ Util.buildClassificationGrid = async function (data) {
     
       return `<ul id="inv-display">${gridItems}</ul>`;
 };
+
+
+// Build the Details view in HTML 
+
+Util.buildVehicleDetailsView = async function(data) {
+  if(data.length === 0){
+    return 'Sorry we do not currently have details for this vehicle, come again soon!'
+  } else {
+    const vehicleDetails = data[0]
+
+    return `
+          <div class="details-grid">
+              <img src="${vehicleDetails.inv_image}"/>
+
+              <div>
+                  <h2>${vehicleDetails.inv_make} ${vehicleDetails.inv_model} Deteails</h2>
+                  <p><strong>Price:</strong> $ ${new Intl.NumberFormat('en-US').format(vehicleDetails.inv_price)}</p>
+                  <p><strong>Description:</strong> ${vehicleDetails.inv_description}</p>
+                  <p><strong>Color:</strong> ${vehicleDetails.inv_color}</p>
+                  <p><strong>Miles:</strong> ${new Intl.NumberFormat('en-US').format(vehicleDetails.inv_miles)}</p>
+              </div>
+          </div>
+    `
+  }
+}
+
+/* ****************************************
+ * Middleware For Handling Errors
+ * Wrap other function in this for 
+ * General Error Handling
+ **************************************** */
+Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
+
+
+
+
+module.exports = Util
