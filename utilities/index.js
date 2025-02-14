@@ -80,6 +80,53 @@ Util.buildVehicleDetailsView = async function(data) {
   }
 }
 
+// Build the login view 
+
+Util.buildLoginView = async function () {
+  return `
+  <div class="login-container">
+    <form action="#" method="POST">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="account_email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="account_password" required>
+
+        <button type="submit" class="login-btn">LOGIN</button>
+    </form>
+
+    <p class="signup-link">No account? <a href="/account/register">Sign-up</a></p>
+  </div>
+  `
+}
+
+//Build the register view 
+
+Util.buildRegisterView = async function () {
+  return `
+
+  <div class="container">
+    <form action="#" method="POST">
+        <label for="first-name">First name</label>
+        <input type="text" id="first-name" name="account_firstname" required>
+
+        <label for="last-name">Last name</label>
+        <input type="text" id="last-name" name="account_lastname" required>
+
+        <label for="email">Email address</label>
+        <input type="email" id="email" name="account_email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="account_password" required
+              pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{12,}$"
+              title="Password must be at least 12 characters long, contain one uppercase letter, one number, and one special character">
+
+        <button type="submit" class="btn">Register</button>
+    </form>
+  </div>
+  `
+};
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 
