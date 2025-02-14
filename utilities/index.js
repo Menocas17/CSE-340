@@ -5,7 +5,7 @@ const Util = {}
 
 Util.getNav = async function (req, res, next) {
   let data = await invModel.getClassifications();
-  console.log(data);
+  
 
   let list = `
       <ul>
@@ -90,7 +90,7 @@ Util.buildLoginView = async function () {
         <input type="email" id="email" name="account_email" required>
 
         <label for="password">Password:</label>
-        <input type="password" id="password" name="account_password" required>
+        <input type="password" id="password" name="account_password" pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{12,}$" required>
 
         <button type="submit" class="login-btn">LOGIN</button>
     </form>
@@ -106,22 +106,22 @@ Util.buildRegisterView = async function () {
   return `
 
   <div class="container">
-    <form action="#" method="POST">
-        <label for="first-name">First name</label>
-        <input type="text" id="first-name" name="account_firstname" required>
+    <form action="/account/register" method="post">
+      <label for="first-name">First name</label>
+      <input type="text" id="first-name" name="account_firstname" required>
 
-        <label for="last-name">Last name</label>
-        <input type="text" id="last-name" name="account_lastname" required>
+      <label for="last-name">Last name</label>
+      <input type="text" id="last-name" name="account_lastname" required>
 
-        <label for="email">Email address</label>
-        <input type="email" id="email" name="account_email" required>
+      <label for="email">Email address</label>
+      <input type="email" id="email" name="account_email" required>
 
-        <label for="password">Password</label>
-        <input type="password" id="password" name="account_password" required
-              pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{12,}$"
-              title="Password must be at least 12 characters long, contain one uppercase letter, one number, and one special character">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="account_password" required
+      pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{12,}$" 
+            title="Password must be at least 12 characters long, contain one uppercase letter, one number, and one special character">
 
-        <button type="submit" class="btn">Register</button>
+      <button type="submit" class="btn">Register</button>
     </form>
   </div>
   `
