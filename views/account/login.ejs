@@ -6,4 +6,24 @@
 
 <%- messages() %>
 
-<%- loginView %>
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
+<div class="login-container">
+    <form id="loginForm" action="/account/login" method="POST">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="account_email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="account_password" pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{12,}$" required>
+
+        <button type="submit" class="login-btn">LOGIN</button>
+    </form>
+
+    <p class="signup-link">No account? <a href="/account/register">Sign-up</a></p>
+  </div>

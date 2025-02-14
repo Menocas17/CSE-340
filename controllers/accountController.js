@@ -7,21 +7,18 @@ const accCont = {}
 * *************************************** */
 accCont.buildLogin = async function (req, res, next) {
     let nav = await utilities.getNav()
-    const loginView = await utilities.buildLoginView()
     res.render("account/login", {
       title: "Login",
       nav,
-      loginView
+      errors: null
     })
 }
 
 accCont.buildRegister = async function (req, res, next) {
     let nav = await utilities.getNav()
-    const registerView = await utilities.buildRegisterView()
     res.render("account/register", {
       title: "Register",
       nav,
-      registerView,
       errors: null,
     })
 }

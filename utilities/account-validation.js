@@ -1,5 +1,6 @@
 const utilities = require(".")
 const { body, validationResult } = require("express-validator")
+const {checkExistingEmail} = require('../models/account-model')
 const validate = {}
 
 /*  **********************************
@@ -30,7 +31,13 @@ validate.registationRules = () => {
       .notEmpty()
       .isEmail()
       .normalizeEmail() // refer to validator.js docs
-      .withMessage("A valid email is required."),
+      .withMessage("A valid email is required.")
+      .custom(async (account_email) => {
+        const emailExist = await checkExistingEmail(account_email)
+        if (emailExist){
+            throw new Error('Email exists. Please log in or use a different email')
+        }
+      }),
   
       // password is required and must be strong password
       body("account_password")
@@ -47,13 +54,55 @@ validate.registationRules = () => {
     ]
   }
 
+validate.loginRules = () => {
+    return [  
+        body("account_email")
+        .trim()
+        .escape()
+        .notEmpty()
+        .isEmail()
+        .normalizeEmail() // refer to validator.js docs
+        .withMessage("A valid email is required."),
+    
+        // password is required and must be strong password
+        body("account_password")
+            .trim()
+            .notEmpty()
+            .isStrongPassword({
+            minLength: 12,
+            minLowercase: 1,
+            minUppercase: 1,
+            minNumbers: 1,
+            minSymbols: 1,
+            })
+            .withMessage("Invalid Password"),
+    ]
+}
+
+validate.checkLoginData = async (req, res, next) => {
+    const {account_email, account_password} = req.body
+    let errors = []
+    errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        let nav = await utilities.getNav()
+        res.render("account/login", {
+          errors,
+          title: "Login",
+          nav,
+          account_email,
+          account_password
+        })
+        return
+      }
+    next()
+}
+
 
   /* ******************************
  * Check data and return errors or continue to registration
  * ***************************** */
 validate.checkRegData = async (req, res, next) => {
     const { account_firstname, account_lastname, account_email } = req.body
-    const registerView = await utilities.buildRegisterView()
     let errors = []
     errors = validationResult(req)
     if (!errors.isEmpty()) {
@@ -62,7 +111,6 @@ validate.checkRegData = async (req, res, next) => {
         errors,
         title: "Registration",
         nav,
-        registerView,
         account_firstname,
         account_lastname,
         account_email,
