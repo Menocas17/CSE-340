@@ -253,11 +253,106 @@ h1 {
   text-align: center;
 }
 
+
+/* Styling the management view  */
+
+.management-links {
+  list-style: none;
+  padding: 0;
+  margin-left: 5rem;
+}
+
+.management-links li {
+  margin-bottom: 5rem;
+}
+
+/* Styling the new classification form  */
+
+.classification-form{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+form label {
+  font-weight: bold;
+  font-size: 2rem;
+}
+form input {
+  display: block;
+  height: 3rem;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  border-radius: .5rem;
+  border: 1px solid;
+}
+
+form span{
+  display: block;
+  
+  color: #084a58;
+}
+
+.form-btn {
+  border: none
+}
+
+.class-inv-title {
+  text-align: center;
+  margin-left: 0;
+}
+
+.notice {
+  color: red;
+  text-align: center;
+  list-style: none;
+}
+
+/* Styling the new inventoru form  */
+
+.inventory-form {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+}
+
+.inventory-form form {
+  border: 2px solid #28B5D6;
+  padding: 2rem;
+  border-radius: 2rem;
+}
+
+select, textarea {
+  display: block;
+  margin: 0 auto;
+}
+
+select {
+  height: 3rem;
+  margin-bottom: 2rem;
+  border-radius: .5rem;
+}
+
+input::placeholder {
+  text-align: center;
+}
+
+input, select, textarea {
+  text-align: center;
+}
+
 /* Styling the footer  */
 
 footer {
   background-color: black;
   color: white;
   text-align: center;
+  border-radius: 1rem;
+}
+
+footer a {
+  text-decoration: none;
+  color: white;
 }
 

@@ -1,5 +1,5 @@
 <% if (title) {%>
-    <h1><%= title %></h1>
+    <h1 class="class-inv-title"><%= title %></h1>
     <% } else {
         res.redirect('/')
     } %>
@@ -9,7 +9,7 @@
 <% if (errors) { %>
     <ul class="notice">
    <% errors.array().forEach(error => { %>
-     <li><%= error.msg %></li>
+     <li> - <%= error.msg %></li>
   <%  }) %>
    </ul>
   <% } %>
@@ -17,9 +17,9 @@
 <div class="classification-form">
     <form id="classificationForm" action="/inv" method="post">
         <label for="className">Classification Name</label>
-        <span>Name must be Alphabetic Characters only</span>
+        <span> -Name must be Alphabetic Characters only</span>
         <input type="text" name="classification_name" id="className" pattern="^[A-Za-z]+$" title="Only letters and numbers are allowed." required>
 
-        <button type="submit" class="btn">Add Classification</button>
+        <button type="submit" class="action-button form-btn">Add Classification</button>
     </form>
 </div>

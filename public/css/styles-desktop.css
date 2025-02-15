@@ -1,5 +1,48 @@
 
 
+@media (min-width: 765px) { 
+  
+  #inv-display {
+    display: grid;
+    Grid-template-columns: repeat(
+	    auto-fill,
+	    minmax(20rem, 1fr)
+    );
+  }
+
+  .card.category-card {
+    width: 90%;
+  }
+
+  .card.category-card h2 {
+    font-size: 2.5rem;
+  }
+
+  /* Styling the details page  */
+
+  .details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .management-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  form {
+    width: 70%;
+  }
+
+  form input, form select, form textarea {
+    width: 80%;
+  }
+
+
+}
+
 @media (min-width: 1024px) { 
     h1 {
         font-size: 4.4rem;
@@ -101,6 +144,25 @@
         line-height: 5.5rem;
       }
 
+    .management-links{
+        justify-content: left;
+        
+      }
+
+    .management-links a {
+      font-size: 2rem;
+    }
+
+    .form-btn{
+      font-size: 2rem;
+    }
+
+    
+    form {
+      width: 50%;
+    }
+   
+
       /* footer {
         background-color: white;
         color: black;
@@ -108,31 +170,5 @@
       } */
 }
 
-@media (min-width: 765px) { 
-  
-  #inv-display {
-    display: grid;
-    Grid-template-columns: repeat(
-	    auto-fill,
-	    minmax(20rem, 1fr)
-    );
-  }
 
-  .card.category-card {
-    width: 90%;
-  }
-
-  .card.category-card h2 {
-    font-size: 2.5rem;
-  }
-
-  /* Styling the details page  */
-
-  .details-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-}
 
