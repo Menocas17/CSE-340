@@ -18,6 +18,8 @@ const utilities = require ('./utilities')
 const error = require('./routes/errorRoute')
 const accountRoute = require('./routes/accountRoute')
 const bodyParser = require("body-parser")
+const cookieParser = require('cookie-parser')
+
 
 
 
@@ -55,6 +57,8 @@ app.use(function(req, res, next){
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
+
+app.use(cookieParser())
 
 
 /* ***********************
