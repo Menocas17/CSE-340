@@ -208,4 +208,50 @@ invCont.editInventory = async function (req, res, next) {
   }
 
 
+/* ***************************
+Build the delete view 
+    * ************************** */
+
+invCont.deleteInventoryView = async function (req, res, next) {
+    let nav = await utilities.getNav(),
+    inv_id = req.params.inv_id
+    const data = await invModel.getVehicleDetailsById(inv_id)
+    const title = `Delete ${data[0].inv_make} ${data[0].inv_model}`
+    res.render('inventory/deleteInventory', {
+        title,
+        nav,
+        inv_id,
+        inv_make: data[0].inv_make,
+        inv_model: data[0].inv_model,
+        inv_year: data[0].inv_year,
+        inv_price: data[0].inv_price,
+        errors: null,
+    })
+}
+
+invCont.deleteInventory = async function (req, res, next) {
+    let nav = await utilities.getNav()
+    const {inv_id} = req.body
+    const deleteResult = await invModel.deleteInventoryFromDB(inv_id)
+    if (deleteResult) {
+      req.flash("notice", "The item was successfully deleted.")
+      res.redirect("/inv")
+    } else {
+      const data = await invModel.getVehicleDetailsById(inv_id)
+      const title = `Delete ${data[0].inv_make} ${data[0].inv_model}`
+      req.flash("notice", "Sorry, the delete failed.")
+      res.status(501).render("inventory/deleteInventory", {
+        title,
+        nav,
+        inv_id,
+        inv_make: data[0].inv_make,
+        inv_model: data[0].inv_model,
+        inv_year: data[0].inv_year,
+        inv_price: data[0].inv_price,
+        errors: null,
+      })
+    }   
+}
+
+
 module.exports = invCont
