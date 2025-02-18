@@ -144,10 +144,10 @@
         line-height: 5.5rem;
       }
 
-    .management-links{
+    /* .management-links{
         justify-content: left;
         
-      }
+      } */
 
     .management-links a {
       font-size: 2rem;
@@ -160,6 +160,16 @@
     
     form {
       width: 50%;
+    }
+
+    #inventoryDisplay{
+      width: 60%;
+    }
+
+    .tb-btn {
+      font-size: 1.5rem;
+
+    
     }
    
 

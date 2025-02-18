@@ -16,6 +16,10 @@ router.get('/newClassification', utilities.handleErrors(invController.buildNewCl
 
 router.get('/newInventory', utilities.handleErrors(invController.buildNewInventoryView))
 
+router.get('/getInventory/:classification_id', utilities.handleErrors(invController.getInventoryJSON))
+
+router.get('/edit/:inv_id', utilities.handleErrors(invController.buildEditInv))
+
 router.post('', 
 invValidate.newClassificationRules(),
 invValidate.checkNewClassificaiton,
@@ -25,5 +29,11 @@ router.post('/newInventory',
 invValidate.newInevntoryRules(),
 invValidate.checkNeInventoryData,
 utilities.handleErrors(invController.addingNewInv))
+
+router.post('/edit/editInventory', 
+invValidate.newInevntoryRules(),
+invValidate.checkUpdate,
+utilities.handleErrors(invController.editInventory))
+
 
 module.exports = router;

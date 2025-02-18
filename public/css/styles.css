@@ -296,6 +296,9 @@ form span{
 .form-btn {
   border: none
 }
+.form-btn:disabled {
+  background-color: #cecece;
+}
 
 .class-inv-title {
   text-align: center;
@@ -342,6 +345,51 @@ input, select, textarea {
   text-align: center;
 }
 
+/* Styling the classificaiton list in the management view  */
+
+.classifications-list li {
+  margin-bottom: 3rem;
+}
+
+.management-titles, .management-p {
+  text-align: center;
+}
+
+.management-p {
+  margin-bottom: 5rem;
+}
+
+/* Styling the table in the vehicle management view */
+
+#inventoryDisplay {
+  width: 80%;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+#inventoryDisplay th, #inventoryDisplay td {
+  border: 1px solid black;
+  padding: 1.5rem;
+  text-align: left ;
+  text-align: center;
+}
+
+#inventoryDisplay thead {
+  background-color: black;
+  color: white;
+  text-transform: uppercase;
+}
+
+#inventoryDisplay tbody tr:nth-child(even) {
+  background-color: #cecece;
+}
+
+.tb-btn {
+  font-size: 1.5rem;
+  padding: .8rem;
+  font-weight: normal;
+
+}
 /* Styling the footer  */
 
 footer {
