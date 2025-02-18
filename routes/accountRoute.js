@@ -11,7 +11,7 @@ router.get('/login', utilities.handleErrors(accountController.buildLogin));
 
 router.get('/register', utilities.handleErrors(accountController.buildRegister));
 
-router.get('/management', utilities.handleErrors(accountController.buildManagement))
+router.get('/management', utilities.checkLogin, utilities.handleErrors(accountController.buildManagement))
 
 
 router.post('/register', 
