@@ -32,11 +32,17 @@ utilities.handleErrors(accountController.accountLogin)
 
 // update the account info
 
-router.post('/updateAccount', utilities.handleErrors(accountController.updateAccount))
+router.post('/updateAccount', 
+regValidate.updateAccountRules(),
+regValidate.checkUpdatedAccountData,
+utilities.handleErrors(accountController.updateAccount))
 
 // update the account password
 
-router.post('/updatePassword', utilities.handleErrors(accountController.updateAccount))
+router.post('/updatePassword', 
+regValidate.updatePasswordRules(),
+regValidate.checkUpdatedPasswordData,
+utilities.handleErrors(accountController.updateAccount))
 
 
 module.exports = router;

@@ -423,6 +423,15 @@ input, select, textarea {
   justify-content: space-evenly;
   gap: 1rem;
 }
+
+.login-container {
+  text-align: center;
+ 
+}
+
+#loginForm, .register-form {
+  margin: 0 auto;
+}
 /* Styling the footer  */
 
 footer {

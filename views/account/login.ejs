@@ -1,5 +1,5 @@
 <% if (title) {%>
-    <h1><%= title %></h1>
+    <h1 class="account-h1"><%= title %></h1>
     <% } else {
         res.redirect('/')
     } %>
@@ -22,7 +22,7 @@
         <label for="password">Password:</label>
         <input type="password" id="password" name="account_password" pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{12,}$" required>
 
-        <button type="submit" class="login-btn">LOGIN</button>
+        <button type="submit" class="account-btn action-button">LOGIN</button>
     </form>
 
     <p class="signup-link">No account? <a href="/account/register">Sign-up</a></p>

@@ -1,5 +1,5 @@
 <% if (title) {%>
-    <h1><%= title %></h1>
+    <h1 class="account-h1"><%= title %></h1>
     <% } else {
         res.redirect('/')
     } %>
@@ -14,8 +14,8 @@
    </ul>
   <% } %>
 
-<div class="container">
-<form action="/account/register" method="post">
+<div class="login-container">
+<form action="/account/register" method="post" class="register-form">
     <label for="first-name">First name</label>
     <input type="text" id="first-name" name="account_firstname" required value="<%= locals.account_firstname %>"">
 
@@ -26,10 +26,9 @@
     <input type="email" id="email" name="account_email" required value="<%= locals.account_email %>"">
 
     <label for="password">Password</label>
-    <input type="password" id="password" name="account_password" required
-    pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{12,}$" 
+    <input type="password" id="password" name="account_password" required pattern="^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()]).{12,}$"
         title="Password must be at least 12 characters long, contain one uppercase letter, one number, and one special character">
 
-    <button type="submit" class="btn">Register</button>
+    <button type="submit" class="account-btn action-button">Register</button>
 </form>
 </div>
