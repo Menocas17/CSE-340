@@ -1,0 +1,19 @@
+<% if (title) {%>
+    <h1 class="class-inv-title"><%= title %></h1>
+    <% } else {
+        res.redirect('/')
+    } %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
+<p class="management-p">Here you can edit the classfication name or delete the classification.</p>
+<table id="classificationDisplay" class="table-styles"></table>
+<script src="../../js/manageClassification.js"></script>

@@ -253,5 +253,89 @@ invCont.deleteInventory = async function (req, res, next) {
     }   
 }
 
+// controller for the manage classificiation View
+
+invCont.manageClassificationView = async function (req, res, next) {
+    let nav = await utilities.getNav()
+    res.render('inventory/manageClassification', {
+        title: 'Manage Classification',
+        nav,
+        errors: null,
+    })
+}
+
+// controller for getting the edit classification view 
+
+invCont.editClassificationView = async function (req, res, next) {
+    let nav = await utilities.getNav()
+    const classication_id = req.params.classification_id
+    const classification = await invModel.getClassificationByID(classication_id)
+    console.log('classification:', classification)
+    res.render('inventory/editClassification', {
+        title: `Edit ${classification.classification_name} name`,
+        nav,
+        classification_name: classification.classification_name,
+        classication_id,
+        errors: null,
+    })
+}
+
+// controller for handling the delete classification
+
+invCont.deleteClassification = async function (req, res, next) {
+    const {classification_id} = req.body
+    console.log('classification_id:', classification_id)
+    const classificationList = await invModel.getInventoryByClassificationId(classification_id)
+    console.log('classificationList:', classificationList)
+    if (classificationList.length > 0) {
+        req.flash('notice', 'Sorry, you cannot delete a classification that has inventory, try deleting the inventory first')
+        res.redirect('/inv')
+    } else {
+        const deleteResult = await invModel.deleteClassificationFromDB(classification_id)
+        if (deleteResult) {
+            req.flash('notice', 'The classification was successfully deleted')
+            res.redirect('/inv')
+        } else {
+            req.flash('notice', 'Sorry, the delete failed')
+            res.redirect('/inv/deleteClassification')
+        }
+    }
+}
+
+
+// controller for handeling the edit clssification 
+
+invCont.editClassificationData = async function (req, res, next) {
+    const classification_id = req.params.classification_id
+    const classification_name = req.body.classification_name
+    console.log('classification_id:', classification_id)
+    console.log('classification_name:', classification_name)
+    const updateResult = await invModel.updateClassification(classification_name, classification_id)
+    if (updateResult) {
+        req.flash('notice', 'The classification was successfully updated')
+        res.redirect('/inv')
+    } else {
+        const classification = await invModel.getClassificationByID(classification_id)
+        req.flash('notice', 'Sorry, the update failed')
+        res.render('inventory/editClassification', {
+            title: `Edit ${classification.classification_name} name`,
+            classification_name: classification.classification_name,
+            errors: null,
+        })
+    }
+}
+
+// controller for getting the classification JSON data
+
+invCont.getClassificationsJSON = async function (req, res, next) {
+    const Data = await invModel.getClassifications()
+    const classData = Data.rows
+    if (classData[0].classification_id) {
+        console.log(classData)
+      return res.json(classData)
+    } else {
+      next(new Error("No data returned"))
+    }
+}
 
 module.exports = invCont

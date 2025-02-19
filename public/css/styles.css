@@ -361,26 +361,26 @@ input, select, textarea {
 
 /* Styling the table in the vehicle management view */
 
-#inventoryDisplay {
+.table-styles {
   width: 80%;
   border-collapse: collapse;
   margin: 0 auto;
 }
 
-#inventoryDisplay th, #inventoryDisplay td {
+.table-styles th, .table-styles td{
   border: 1px solid black;
   padding: 1.5rem;
   text-align: left ;
   text-align: center;
 }
 
-#inventoryDisplay thead {
+.table-styles thead {
   background-color: black;
   color: white;
   text-transform: uppercase;
 }
 
-#inventoryDisplay tbody tr:nth-child(even) {
+.table-styles tbody tr:nth-child(even) {
   background-color: #cecece;
 }
 
@@ -388,9 +388,13 @@ input, select, textarea {
   font-size: 1.5rem;
   padding: .8rem;
   font-weight: normal;
+  border: none;
 
 }
 
+.delete-class-form{
+  margin: 0 auto
+}
 .account-btn {
   font-weight: normal;
   font-size: 1.5rem;

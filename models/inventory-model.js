@@ -96,6 +96,40 @@ async function deleteInventoryFromDB (inv_id) {
     }
 }
 
+async function deleteClassificationFromDB (classification_id) {
+    try {
+        const sql = 'DELETE FROM public.classification WHERE classification_id = $1'
+        return await pool.query(sql, [classification_id])
+
+    } catch (error){
+        console.error('Error deleting classification:', error.message)
+        return error.message
+    }
+}
+
+async function getClassificationByID (classification_id) {  
+    try {
+        const data = await pool.query(
+            `SELECT * FROM public.classification WHERE classification_id = $1`,
+            [classification_id]
+        )
+        return data.rows[0]
+    } catch (error) {
+        console.error('getclassificationbyid error' + error)
+    }
+}
+
+async function updateClassification (classification_name, classification_id) {
+    try {
+        const sql = 'UPDATE public.classification SET classification_name = $1 WHERE classification_id = $2 RETURNING *'
+        return await pool.query(sql, [classification_name, classification_id])
+
+    } catch (error){
+        console.error('Error updating classification:', error.message)
+        return error.message
+    }
+}
 
 
-module.exports = {getClassifications, getInventoryByClassificationId, getVehicleDetailsById, addNewClassification, addNewInventory, updateInventory, deleteInventoryFromDB};
+
+module.exports = {updateClassification, getClassificationByID, getClassifications, getInventoryByClassificationId, getVehicleDetailsById, addNewClassification, addNewInventory, updateInventory, deleteInventoryFromDB, deleteClassificationFromDB};

@@ -1,0 +1,28 @@
+<% if (title) {%>
+    <h1 class="class-inv-title"><%= title %></h1>
+    <% } else {
+        res.redirect('/')
+    } %>
+
+<%- messages() %>
+
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li> - <%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
+<div class="classification-form">
+    <form id="updateForm" action="/inv/editClassification/<%=classication_id%>" method="post">
+        <label for="className">Classification Name</label>
+        <span> -Name must be Alphabetic Characters only</span>
+        <input type="text" name="classification_name" id="className" pattern="^[A-Za-z]+$" title="Only letters are allowed." required
+        value="<%= classification_name %>">
+
+        <button type="submit" class="action-button form-btn" disabled>Edit Classification</button>
+    </form>
+</div>
+
+<script src="../../js/inv-update.js"></script>

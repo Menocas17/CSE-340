@@ -6,9 +6,20 @@
 
 <%- messages() %>
 
+<% if (errors) { %>
+    <ul class="notice">
+   <% errors.array().forEach(error => { %>
+     <li><%= error.msg %></li>
+  <%  }) %>
+   </ul>
+  <% } %>
+
+
 <ul class="management-links">
     <li><a href="/inv/newClassification" class="action-button">Add New Classification</a></li>
+    <li><a href="/inv/manageClassification" class="action-button">Manage Classification</a></li>
     <li><a href="/inv/newInventory" class="action-button">Add New Inventory</a></li>
+
 </ul>
 
 <h2 class="management-titles">Manage Inventory</h2>
@@ -22,6 +33,6 @@
 </select>
 
 
-<table id="inventoryDisplay"></table>
+<table id="inventoryDisplay" class="table-styles"></table>
 <noscript>JavaScript must be enabled to use this page.</noscript>
 <script src="../../js/inventory.js"></script>

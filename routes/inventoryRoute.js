@@ -22,6 +22,19 @@ router.get('/edit/:inv_id', utilities.handleErrors(invController.buildEditInv))
 
 router.get('/delete/:inv_id', utilities.handleErrors(invController.deleteInventoryView))
 
+// router for manage classification view
+
+router.get('/manageClassification', utilities.handleErrors(invController.manageClassificationView))
+
+//router for getting the classification JSON data
+
+router.get('/getClassification', utilities.handleErrors(invController.getClassificationsJSON))
+
+//router for getting the edit classification view
+
+router.get('/editClassification/:classification_id', utilities.handleErrors(invController.editClassificationView))
+
+
 router.post('', 
 invValidate.newClassificationRules(),
 invValidate.checkNewClassificaiton,
@@ -38,6 +51,14 @@ invValidate.checkUpdate,
 utilities.handleErrors(invController.editInventory))
 
 router.post('/delete/deleteInventory', utilities.handleErrors(invController.deleteInventory))
+
+router.post('/deleteClassification/:classification_id', utilities.handleErrors(invController.deleteClassification))
+
+router.post('/editClassification/:classification_id', 
+invValidate.newClassificationRules(),
+invValidate.checkClassificationUpdate,
+utilities.handleErrors(invController.editClassificationData))
+
 
 
 module.exports = router;
