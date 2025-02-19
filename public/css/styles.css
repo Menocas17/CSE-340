@@ -390,6 +390,39 @@ input, select, textarea {
   font-weight: normal;
 
 }
+
+.account-btn {
+  font-weight: normal;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+/* Styling the form the account pages */
+
+.account-form {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.account-h1, .account-management-container {
+  text-align: center;
+  
+  
+}
+
+.account-h1 {
+  margin: 5rem auto;
+}
+
+.logout-link {
+  color: rgb(93, 5, 5);
+}
+
+#tools {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
 /* Styling the footer  */
 
 footer {
@@ -397,6 +430,7 @@ footer {
   color: white;
   text-align: center;
   border-radius: 1rem;
+  margin-top: 5rem;
 }
 
 footer a {

@@ -1,5 +1,5 @@
 <% if (title) {%>
-    <h1><%= title %></h1>
+    <h1 class="account-h1"><%= title %></h1>
     <% } else {
         res.redirect('/')
     } %>
@@ -13,5 +13,13 @@
   <%  }) %>
    </ul>
   <% } %>
+<div class="account-management-container">
+    <h2>Welcome <%= locals.accountData.account_firstname %></h2>
+    <p>You're logged in</p>
+    <a href="./editAccount" class="action-button account-btn">Edit Account Information</a>
 
-<h2>You are logged in</h2>
+    <% if (locals.accountData.account_type === 'Admin' || locals.accountData.account_type === 'Employee') { %>
+        <h2>Inventory Management</h2>
+        <a href="/inv" class="action-button account-btn">Manage Inventory</a>
+    <% } %>
+</div>

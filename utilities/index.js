@@ -127,5 +127,32 @@ Util.checkJWTToken = (req, res, next) => {
   }
  }
 
+// Check the user authorization 
+
+Util.checkAdminOrEmployee = (req, res, next) => {
+  const token = req.cookies.jwt;
+
+  if (!token) {
+    req.flash('notice', 'You need to log in to access this page.');
+    return res.redirect('account/login'); 
+  }
+
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    if (err) {
+      req.flash('notice', 'Invalid token. Please log in again.');
+      return res.redirect('account/login'); 
+    }
+
+    if (user.account_type === 'Employee' || user.account_type === 'Admin') {
+      req.user = user;  
+      return next();  
+    }
+
+    req.flash('notice', 'You do not have permission to access this page.');
+    return res.redirect('account/management'); 
+  });
+}
+
+
 
 module.exports = Util

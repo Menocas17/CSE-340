@@ -41,6 +41,8 @@
   }
 
 
+
+
 }
 
 @media (min-width: 1024px) { 
@@ -170,6 +172,12 @@
       font-size: 1.5rem;
 
     
+    }
+
+    .account-btn {
+      
+      font-size: 2rem;
+      
     }
    
 
